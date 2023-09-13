@@ -24,3 +24,7 @@ let cutout_at_x = 0;
 let cutout_at_y = (SCENE_HEIGHT/ground_offset);
 let cutout_wd = 427;
 let cutout_ht = 345;
+
+function render_scene(){
+    
+}
