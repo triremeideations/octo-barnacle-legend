@@ -26,5 +26,21 @@ let cutout_wd = 427;
 let cutout_ht = 345;
 
 function render_scene(){
-    
+    avatar_render_prep();
+    context.clearRect(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
+    //TODO:
+    //apply foreground
+
+    //ensure active state
+
+    //apply avatar on canvas
+
+    //apply wizard to canvas
+
+    //instantiate wizard attacks
+
+    //display health and status bar
+
+    requestAnimationFrame(render_scene);
 }
+if (sessionStorage.getItem('game_active')==='true') render_scene();
