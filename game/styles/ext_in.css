@@ -1,0 +1,104 @@
+.keyboard {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100vw;
+    min-height: 140px;
+    background-color: #c0c0c017;
+    border-top: 1px solid white;
+}
+@media only screen and (min-width: 400px) and (min-height: 500px){
+    .keyboard{
+        display: none;
+    }
+}
+
+.kn,
+.wl {
+    position: inherit;
+    height: 25%;
+    width: 8%;
+    background-color: white;
+    background-color: #c0c0c038;
+    color: transparent;
+    border: 1px outset white;
+}
+
+.wl{
+    border-radius: 25%;
+    transform: rotateZ(12deg);
+    /* color: black; */
+    border-color: black;
+    border-style: double;
+    box-shadow: 2px 2px 7px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kn:active{
+    transform: translateY(4px);
+}
+.wl:active {
+    transform: rotateZ(12deg) translateY(4px);
+    box-shadow: 0px 0px 0px transparent;
+}
+
+
+#up_k{
+    top: 12%;
+    left: 20%;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+}
+#lf_k{
+    top: 37%;
+    left: 12%;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+}
+#rt_k{
+    top: 37%;
+    left: 28%;
+    border-top-left-radius: 15%;
+    border-bottom-left-radius: 15%;
+}
+#dw_k{
+    top: 62%;
+    left: 20%;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+}
+
+#w_k{
+    top: 12%;
+    right: 20%;
+    background-color: purple;
+}
+#a_k{
+    top: 37%;
+    right: 12%;
+    background-color: blue;
+}
+#s_k{
+    top: 37%;
+    right: 28%;
+    background-color: green;
+}
+#d_k{
+    top: 62%;
+    right: 20%;
+    background-color: greenyellow;
+}
+.clasp{
+    position: inherit;
+    width: 24%;
+    height: 75%;
+    /* border: 1px solid white; */
+    border: 1px solid #c0c0c038;
+    left: 12%;
+    top: 12%;
+    border-radius: 45%;
+    pointer-events: none;
+}

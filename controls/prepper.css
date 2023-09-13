@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-emphasis: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: none;
+    -moz-tap-highlight-color: none;
+    user-select: none;
+    outline: none;
+    font-family: sans-serif;
+}
+
+body::-webkit-scrollbar{
+    width:0; height:0;
+}
+
+body, html{
+    height: 100%;
+}
+
+.inactive {
+    display: none;
+}

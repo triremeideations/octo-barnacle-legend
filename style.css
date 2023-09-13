@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-emphasis: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none;
+    font-family: sans-serif;
+}
+
+body::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+}
+
+body, html{
+    height: 100%;
+}
+
+.inactive {
+    display: none;
+}
+
+body{
+    background-color: black;
+}
+.interact{
+    width: 30vw;
+    background-color: rebeccapurple;
+    color: white;
+    font-family: cnt_b;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.interact:active{
+    transform: translateY(4px);
+}
+.quest_box{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}

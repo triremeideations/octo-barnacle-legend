@@ -1,0 +1,10 @@
+@font-face{
+    font-family: p_one;
+    src: url('./p_one.woff');
+    font-display: block;
+}
+@font-face{
+    font-family: cnt_b;
+    src: url('./cnt_b.woff');
+    font-display: block;
+}
