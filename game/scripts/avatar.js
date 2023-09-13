@@ -26,6 +26,10 @@ class Avatar {
         avatar_FPS++;
     }
 
+    landed(){
+        return this.ca_y >= this.ylimit - cutout_ht + 20;
+    }
+
     move(input_in){
         // move horizontal
         this.ca_x += this.move_speed;
