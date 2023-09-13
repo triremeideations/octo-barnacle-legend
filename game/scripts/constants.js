@@ -1,3 +1,5 @@
+import Avatar from "./avatar";
+
 const main = document.querySelectorAll(".main_frame");
 const win_w = window.innerWidth;
 const win_h = window.innerHeight;
@@ -14,3 +16,4 @@ canvas.width = 1920;
 canvas.height = 800;
 const SCENE_WIDTH = canvas.width;
 const SCENE_HEIGHT = canvas.height;
+const ground_offset = 1.61;
