@@ -31,7 +31,10 @@ function render_scene(){
     context.clearRect(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
     //TODO:
     //apply foreground
-
+    bgLayersPre.forEach(layer =>{
+        layer.update();
+        layer.apply();
+    });
     //ensure avatar active state
 
     //apply avatar on canvas
