@@ -55,6 +55,12 @@ function render_scene(){
         n.rain_fire();
     });
 
+    //apply remaining background
+    bgLayersPost.forEach(layer =>{
+        layer.update();
+        layer.apply();
+    });
+
     //display health and status bar
     //display health
     displayHealth(context);
