@@ -1,5 +1,3 @@
-import render_scene from "./canvas.js";
-
 let start_btn = document.getElementsByClassName('start')[0];
 let stop_btn = document.getElementsByClassName('stop')[0];
 let reload_btn = document.getElementsByClassName('rel')[0];
