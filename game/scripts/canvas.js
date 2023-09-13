@@ -29,19 +29,19 @@ let cutout_ht = 345;
 function render_scene(){
     avatar_render_prep();
     context.clearRect(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
-    //TODO:
-    //apply foreground
+    
     bgLayersPre.forEach(layer =>{
         layer.update();
         layer.apply();
     });
     //ensure avatar active state
     avatar_active = sessionStorage.getItem('st_ava');
+    avatar_active === 'backrun' ? avie.backward() : avie.draw();
 
     //apply avatar on canvas
-    avie.draw();
+    avie.aura();
     avie.move(input_in);
-    
+    avie.attack(input_in, )
     //apply wizard to canvas
     wizard_list.forEach(n => {
         n.update();

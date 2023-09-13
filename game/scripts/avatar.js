@@ -25,6 +25,12 @@ class Avatar {
                     this.ca_x, this.ca_y, cutout_wd, cutout_ht);
         avatar_FPS++;
     }
+    backward(){
+        context.drawImage(avatar,
+                        rps_x(), spr_y(), spr_wd, spr_ht,
+                        this.ca_x, this.ca_y, cutout_wd, cutout_ht);
+        avatar_FPS++;
+    }
 
     landed(){
         return this.ca_y >= this.ylimit - cutout_ht + 20;
@@ -110,26 +116,78 @@ class Avatar {
         context.closePath();
     }
 
-    attack(control_in){
-        if(control_in.presskey.indexOf('w') > -1){
+    attack(input_in){
+        if(input_in.presskey.indexOf('w') > -1){
             sessionStorage.setItem('st_ava','punch');
             this.col = 'white';
         }
-        else if(control_in.presskey.indexOf('s') > -1){
+        else if(input_in.presskey.indexOf('s') > -1){
             sessionStorage.setItem('st_ava','kick');
         }
         
-        else if(control_in.presskey.indexOf('a') > -1
+        else if(input_in.presskey.indexOf('a') > -1
                 && this.landed()){
             this.jump_height -= 10;
         }
-        else if(control_in.presskey.indexOf('a') > -1){
+        else if(input_in.presskey.indexOf('a') > -1){
             sessionStorage.setItem('st_ava','bop');
         }
-        else if(control_in.presskey.indexOf('d') > -1){
+        else if(input_in.presskey.indexOf('d') > -1){
             sessionStorage.setItem('st_ava','burst');
         }
     }
+
+    life(fire_list, wizard_list){
+        if (sessionStorage.getItem('game_over')!='true'){
+            if(skillXP <= 4) mkp += 0.005;
+            else if(19 > skillXP > 10 ) mkp += 0.05;
+            else if(50 > skillXP > 20) mkp += 0.08;
+            else if(skillXP >= 50) mkp += 0.5;
+            if (mkp <= 0) mkp = 0;
+            if (mkp > 100) mkp = 100;
+            
+            //detect collision
+            let damage = 0;
+            fire_list.forEach(ball => {
+                const dx = ball.x_fb - this.aura_x; 
+                const dy = ball.y_fb - this.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < ball.radius + this.aura_radius){
+                    sessionStorage.setItem('st_ava','gethit');
+                    health-= health_reduction_factor;
+                    skillXP--;
+                    handle_game_points();
+                }
+            })
+            wizard_list.forEach(wizzy => {
+                const ax = (wizzy.x + wizzy.width*0.5) - this.aura_x; 
+                const ay = (wizzy.y + wizzy.height*0.5) - this.y;
+                const aist = Math.sqrt(ax*ax + ay*ay);
+                if (aist < wizzy.radius + this.aura_radius){
+                    sessionStorage.setItem('st_ava','gethit');
+                    damage++;
+                    health -= damage;
+                    health = Math.floor(health);
+                    handle_game_points();
+                } 
+            })
+        }
+    }
+}
+
+function handle_game_points(){
+    if (health <= 0){
+        health = 0;
+        sessionStorage.setItem('game_over','true');
+    }
+    if (health <= 50){
+        sessionStorage.setItem('is_injured', 'true');
+    }
+    if (health > 50){
+        sessionStorage.setItem('is_injured', 'false');
+    }
+    if (skillXP <= 0) skillXP = 0;
+
 }
 
 const avie = new Avatar(SCENE_WIDTH, SCENE_HEIGHT);
