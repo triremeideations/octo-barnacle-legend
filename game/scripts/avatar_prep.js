@@ -90,7 +90,7 @@ function avatar_render_prep() {
                     .co_ordinates[frame_pos].y;
     spr_x =()=> (frame_pos*spr_wd);
     spr_y =()=> spr_sh_y;
-    console.log(spr_wd);
+    // console.log(spr_wd);
     
 //reverse the cycle
     function rev_x(n){

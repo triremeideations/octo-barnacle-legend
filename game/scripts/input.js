@@ -1,3 +1,7 @@
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+})
+
 class InputHandler{
     constructor(){
         this.presskey = [];
@@ -34,21 +38,47 @@ class InputHandler{
 
         //simulate keyboard input
 
+        //on touch
         const touch_ev =(key, designation)=>{
             console.log(key);
             if ((key === designation)
                 && this.presskey.indexOf(key) === -1
             ){ this.presskey.push(key) }
-
+        
             console.log(key, this.presskey);
+            // add temp fix for bug on simultaneous press on mobile device,
+            // locking player in perpetual motion.
+            // 'cask' in html
+            if (
+                designation === 'w' ||
+                designation === 'a' ||
+                designation === 's' ||
+                designation === 'd'
+             ){
+                let cask = document.getElementsByClassName('cask');
+                for (let i=0; i<cask.length; i++){
+                    cask[i].classList.add('vash');
+                }
+             }
         }
 
+        //touch over
         const touch_ev_up =(key, designation)=>{
                 console.log(key);
                 if ((key === designation)){
                     this.presskey.splice(this.presskey.indexOf(key), 1);
                 }
-            
+                if (
+                    designation === 'w' ||
+                    designation === 'a' ||
+                    designation === 's' ||
+                    designation === 'd'
+                 ){
+                    let cask = document.getElementsByClassName('cask');
+                    for (let i=0; i<cask.length; i++){
+                        cask[i].classList.remove('vash');
+                    }
+                 } 
             console.log(key, this.presskey);
         }
 
@@ -66,7 +96,6 @@ class InputHandler{
                 let key = e.changedTouches[0].target.textContent;
                 touch_ev_up(key, designation);
             });
-
         }
 
         simkey(up_k, "ArrowUp");
@@ -77,6 +106,7 @@ class InputHandler{
         simkey(a_k, "a");
         simkey(s_k, "s");
         simkey(d_k, "d");
+
     }
 }
 
