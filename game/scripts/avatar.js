@@ -116,7 +116,7 @@ class Avatar {
         context.closePath();
     }
 
-    attack(input_in){
+    attack(input_in, fire_list, wizard_list){
         if(input_in.presskey.indexOf('w') > -1){
             sessionStorage.setItem('st_ava','punch');
             this.col = 'white';
@@ -134,6 +134,40 @@ class Avatar {
         }
         else if(input_in.presskey.indexOf('d') > -1){
             sessionStorage.setItem('st_ava','burst');
+        }
+
+        //dealing damage to wizard
+        if (wizard_health <= 0) wizard_health = 0;
+        if (
+            avatar_active === 'punch'
+        ){
+            
+            if (mkp >= 1){
+                context.beginPath();
+                context.arc(this.atk_x, this.y,
+                this.att_radius, 0, 2 * Math.PI);
+                context.fillStyle = 'green';
+                context.fill();
+                context.closePath();
+
+                for(i=0; i < 200; i++){
+                    this.atk_x++;
+                    mkp -= 0.01;
+                }
+                setTimeout(() => {
+                    for(i=0; i < 200; i++){
+                        this.atk_x--;
+                    }
+                }, 500);
+            }
+            wizard_list.forEach(wizzy => {
+                const di_x = (wizzy.x + wizzy.width*0.5) - this.atk_x; 
+                const di_y = (wizzy.y + wizzy.height*0.5) - this.y;
+                const dist_dist = Math.sqrt(di_x*di_x + di_y*di_y);
+                if (dist_dist < wizzy.radius + this.att_radius){
+                    wizard_health -= enemy_hurt_factor;
+                } 
+            })
         }
     }
 

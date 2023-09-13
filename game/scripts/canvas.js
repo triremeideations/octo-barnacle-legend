@@ -26,6 +26,10 @@ let cutout_at_y = (SCENE_HEIGHT/ground_offset);
 let cutout_wd = 427;
 let cutout_ht = 345;
 
+const health_reduction_factor = 0.1;
+const score_reduction_factor = 0.2;
+const enemy_hurt_factor = 0.05;
+
 function render_scene(){
     avatar_render_prep();
     context.clearRect(0, 0, SCENE_WIDTH, SCENE_HEIGHT);
