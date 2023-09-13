@@ -19,7 +19,8 @@ const fireball_radius = 40;
 const aura_radius = 80;
 
 let att_radius = 100;
-let spr_wd = 640, spr_ht = 520;
+const spr_wd = 640;
+const spr_ht = 520;
 let cutout_at_x = 0;
 let cutout_at_y = (SCENE_HEIGHT/ground_offset);
 let cutout_wd = 427;
@@ -31,7 +32,7 @@ function render_scene(){
     //TODO:
     //apply foreground
 
-    //ensure active state
+    //ensure avatar active state
 
     //apply avatar on canvas
 
@@ -43,4 +44,5 @@ function render_scene(){
 
     requestAnimationFrame(render_scene);
 }
+
 if (sessionStorage.getItem('game_active')==='true') render_scene();
