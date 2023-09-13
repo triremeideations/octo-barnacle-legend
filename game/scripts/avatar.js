@@ -91,6 +91,45 @@ class Avatar {
         if (this.y > SCENE_HEIGHT - cutout_ht + 170)
             this.y = SCENE_HEIGHT - cutout_ht + 170;
     }
+    aura(){
+        context.beginPath();
+        context.arc(this.aura_x, this.y,
+            this.aura_radius, 0, 2 * Math.PI);
+            // context.strokeStyle = this.col;
+            context.strokeStyle = 'transparent';
+            context.stroke();
+            context.closePath();
+        }
+
+    shield(){
+        context.beginPath();
+        context.arc(this.atk_x, this.y,
+            this.att_radius, 0, 2 * Math.PI);
+        context.strokeStyle = 'green';
+        context.stroke();
+        context.closePath();
+    }
+
+    attack(control_in){
+        if(control_in.presskey.indexOf('w') > -1){
+            sessionStorage.setItem('st_ava','punch');
+            this.col = 'white';
+        }
+        else if(control_in.presskey.indexOf('s') > -1){
+            sessionStorage.setItem('st_ava','kick');
+        }
+        
+        else if(control_in.presskey.indexOf('a') > -1
+                && this.landed()){
+            this.jump_height -= 10;
+        }
+        else if(control_in.presskey.indexOf('a') > -1){
+            sessionStorage.setItem('st_ava','bop');
+        }
+        else if(control_in.presskey.indexOf('d') > -1){
+            sessionStorage.setItem('st_ava','burst');
+        }
+    }
 }
 
 const avie = new Avatar(SCENE_WIDTH, SCENE_HEIGHT);
