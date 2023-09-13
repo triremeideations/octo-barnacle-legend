@@ -62,7 +62,7 @@ avatar_states.forEach((el, ind) => {
 });
 
 //do this manually for a backward run sprite
-co_ordinates = [
+let co_ordinates = [
     {x: 0, y: 520},
     {x: 640, y: 520},
     {x: 1280, y: 520},
@@ -70,7 +70,7 @@ co_ordinates = [
     {x: 2560, y: 520}
 ]
 
-backrun = {co_ordinates};
+let backrun = {co_ordinates};
 spritesheet['backrun'] = backrun;
 console.log(spritesheet);
 //manual push for backward run sprite
@@ -80,7 +80,7 @@ function avatar_render_prep(){
     avatar_active = sessionStorage.getItem('st_ava');
 
     //activate different frames for separate states
-    pace();
+    pace(avatar_active);
 
     const frame_limit = spritesheet[avatar_active]
                         .co_ordinates.length;
@@ -106,3 +106,52 @@ function avatar_render_prep(){
     rps_x =()=> (frame_sop * spr_wd);
 }
 //prep over
+
+function pace(n){
+    switch (n) {
+        case 'run':
+            frame_speeds = 8;
+            bg_Speed = 10;
+            break;
+        case 'backrun':
+            frame_speeds = 8;
+            bg_Speed = 0;
+            break;
+        case 'standby':
+            frame_speeds = 50;
+            bg_Speed = 0;
+            break;
+        case 'fly':
+            frame_speeds = 1.2;
+            bg_Speed = 20;
+            break;
+        case 'gethit':
+            frame_speeds = 9;
+            bg_Speed = 0;
+            break;
+        case 'limp':
+            frame_speeds = 6;
+            bg_Speed = 1;
+            break;
+        case 'kick':
+            frame_speeds = 5;
+            bg_Speed = 0;
+            break;
+        case 'punch':
+            frame_speeds = 3;
+            bg_Speed = 0;
+            break;
+        case 'bop':
+            frame_speeds = 5;
+            bg_Speed = 5;
+            break;
+        case 'burst':
+            frame_speeds = 5;
+            bg_Speed = 2;
+            break;
+        default:
+            frame_speeds = 8;
+            bg_Speed = 10;
+            break;
+    }
+}
