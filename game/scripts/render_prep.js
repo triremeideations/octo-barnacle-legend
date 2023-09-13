@@ -1,5 +1,6 @@
-export default function avatar_render_prep(){
+import pace from "./utils.js";
 
+export default function avatar_render_prep(spr_wd, spr_ht){
     let avatar_FPS = 0;
     const avatar = new Image();
 
@@ -65,7 +66,7 @@ export default function avatar_render_prep(){
     });
         
         //do this manually for a backward run sprite
-        co_ordinates = [
+        let co_ordinates = [
             {x: 0, y: 520},
             {x: 640, y: 520},
             {x: 1280, y: 520},
@@ -73,13 +74,13 @@ export default function avatar_render_prep(){
             {x: 2560, y: 520}
         ]
         
-        backrun = {co_ordinates};
+        const backrun = {co_ordinates};
         spritesheet['backrun'] = backrun;
         console.log(spritesheet);
         //manual push for backward run sprite
         
         //first set avatar active
-        avatar_active = sessionStorage.getItem('st_ava');
+        const avatar_active = sessionStorage.getItem('st_ava');
         
         //activate different frames for separate states
         pace();

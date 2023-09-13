@@ -26,7 +26,8 @@ const fireball_radius = 40;
 const aura_radius = 80;
 let att_radius = 100;
 
-let spr_wd = 640, spr_ht = 520;
+let spr_wd = 640;
+let spr_ht = 520;
 let cutout_at_x = 0;
 let cutout_at_y = (SCENE_HEIGHT/ground_offset);
 let cutout_wd = 427;
@@ -36,9 +37,9 @@ let cutout_ht = 345;
 // const score_reduction_factor = 0.2;
 // const enemy_hurt_factor = 0.05;
 
-function render_scene(){
-    avatar_render_prep();
+export default function render_scene(){
+    avatar_render_prep(spr_wd, spr_ht);
     context.clearRect(0,0, SCENE_WIDTH, SCENE_HEIGHT);
-    
+
     requestAnimationFrame(render_scene());
 }
