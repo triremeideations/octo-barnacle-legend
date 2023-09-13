@@ -41,9 +41,19 @@ function render_scene(){
     //apply avatar on canvas
     avie.draw();
     avie.move(input_in);
+    
     //apply wizard to canvas
+    wizard_list.forEach(n => {
+        n.update();
+        n.apply();
+    });
 
     //instantiate wizard attacks
+    //engage fireballs
+    fire_list.forEach(n =>{
+        n.apply();
+        n.rain_fire();
+    });
 
     //display health and status bar
 

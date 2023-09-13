@@ -68,6 +68,7 @@ class InputHandler{
                 if ((key === designation)){
                     this.presskey.splice(this.presskey.indexOf(key), 1);
                 }
+                //the perp hold fix
                 if (
                     designation === 'w' ||
                     designation === 'a' ||
