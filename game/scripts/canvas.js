@@ -56,6 +56,8 @@ function render_scene(){
     });
 
     //display health and status bar
+    //display health
+    displayHealth(context);
 
     requestAnimationFrame(render_scene);
 }

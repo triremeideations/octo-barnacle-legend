@@ -132,7 +132,8 @@ class Fireball{
         this.x_fb -= this.fbl_speed * 3.5;
         if(this.x_fb + this.radius < 0){
             this.x_fb = this.init;
-            
+            skillXP++;
+            sessionStorage.setItem('skillXP',JSON.stringify(skillXP));
         }  
         this.y_fb += 3 * Math.sin(this.angle);
         this.angle += this.angle_chg;
