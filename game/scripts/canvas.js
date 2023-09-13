@@ -40,6 +40,7 @@ function render_scene(){
 
     //apply avatar on canvas
     avie.draw();
+    avie.move(input_in);
     //apply wizard to canvas
 
     //instantiate wizard attacks
