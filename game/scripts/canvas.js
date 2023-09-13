@@ -36,9 +36,10 @@ function render_scene(){
         layer.apply();
     });
     //ensure avatar active state
+    avatar_active = sessionStorage.getItem('st_ava');
 
     //apply avatar on canvas
-
+    avie.draw();
     //apply wizard to canvas
 
     //instantiate wizard attacks

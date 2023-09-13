@@ -1,6 +1,4 @@
 let avatar_FPS = 0;
-const avatar = new Image();
-avatar.src = './assets/test/spritesheet.png';
 
 const spritesheet = [];
 const avatar_states = [
