@@ -45,7 +45,9 @@ function render_scene(){
     //apply avatar on canvas
     avie.aura();
     avie.move(input_in);
-    avie.attack(input_in, )
+    avie.attack(input_in, fire_list, wizard_list);
+    avie.life(fire_list, wizard_list);
+    
     //apply wizard to canvas
     wizard_list.forEach(n => {
         n.update();
