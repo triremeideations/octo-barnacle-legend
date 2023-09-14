@@ -16,7 +16,7 @@ canvas.height = 800;
 const SCENE_WIDTH = canvas.width;
 const SCENE_HEIGHT = canvas.height;
 const fireball_radius = 40;
-const aura_radius = 80;
+let aura_radius = 80;
 
 let att_radius = 100;
 const spr_wd = 640;
@@ -28,6 +28,8 @@ let cutout_ht = 345;
 
 const health_reduction_factor = 0.1;
 const score_reduction_factor = 0.2;
+const mkp_reduction_factor_A = 0.001;
+const mkp_reduction_factor_B = 10;
 const enemy_hurt_factor = 0.5;
 
 function render_scene(){
@@ -45,9 +47,9 @@ function render_scene(){
     //apply avatar on canvas
     avie.aura();
 
-    avatar_active === 'burst' ? avie.shield() : avie.draw();
+    avatar_active === 'burst' ? avie.shield(fire_list) : console.log('burst_inactive');
     avie.move(input_in);
-    avie.attack(input_in, fire_list, wizard_list);
+    avie.attack(input_in, wizard_list);
     avie.life(fire_list, wizard_list);
     
     //apply wizard to canvas

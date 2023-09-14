@@ -17,6 +17,10 @@ class Avatar {
         this.jump_height = 0;
         this.j_drag = 1;
         this.col = 'red';
+        this.col_2 = 'green';
+        this.col_3 = 'blue';
+        this.col_asp = 'transparent'
+        this.col_aura_s = this.col_asp;
     }
     
     draw(){
@@ -53,6 +57,10 @@ class Avatar {
         else if(input_in.presskey.indexOf('ArrowLeft') > -1){
             this.move_speed = -7;
             sessionStorage.setItem('st_ava','backrun');
+        }
+        else if(input_in.presskey.indexOf('ArrowDown') > -1){
+            this.move_speed = 0;
+            sessionStorage.setItem('st_ava','burst');
         }
         else if(input_in.presskey.indexOf('ArrowUp') > -1 && this.landed()){
             this.jump_height -= 30;
@@ -101,22 +109,40 @@ class Avatar {
         context.beginPath();
         context.arc(this.aura_x, this.y,
             this.aura_radius, 0, 2 * Math.PI);
-            // context.strokeStyle = this.col;
-            context.strokeStyle = 'transparent';
+            context.fillStyle = this.col_asp;
             context.stroke();
             context.closePath();
         }
 
-    shield(){
-        context.beginPath();
+    shield(fire_list){
+        this.aura_y = this.y;
+        context.beginPath(fire_list);
         context.arc(this.atk_x, this.y,
             this.att_radius, 0, 2 * Math.PI);
-        context.strokeStyle = 'green';
-        context.stroke();
+        context.fillStyle = this.col_aura_s;
+        context.fill();
         context.closePath();
+        
+        //implement immunity to fireballs
+        //immunity stops when magick depletes
+            fire_list.forEach(ball => {
+                const dee_x = (ball.x_fb) - this.aura_x; 
+                const dee_y = (ball.y_fb) - this.aura_y;
+                const dist_tance = Math.sqrt(dee_x*dee_x + dee_y*dee_y);
+                if (dist_tance < ball.radius + this.aura_radius){
+                    mkp -= mkp_reduction_factor_B;
+                    if (mkp >= 1) {
+                        this.col_aura_s = this.col_2;
+                        this.aura_radius = 0;
+                    }
+                }
+                setTimeout(()=> this.aura_radius = 80, 3000);
+                setTimeout(()=>{this.col_aura_s = this.col_asp}, 1500);
+            })
     }
 
-    attack(input_in, fire_list, wizard_list){
+
+    attack(input_in, wizard_list){
         if(input_in.presskey.indexOf('w') > -1){
             sessionStorage.setItem('st_ava','punch');
             this.col = 'white';
@@ -141,26 +167,24 @@ class Avatar {
         if (
             avatar_active === 'punch'
         ){
-            
             if (mkp >= 1){
                 context.beginPath();
                 context.arc(this.atk_x, this.y,
-                this.att_radius, 0, 2 * Math.PI);
-                context.fillStyle = 'brown';
-                context.fill();
-                context.closePath();
-
-                for(i=0; i < 200; i++){
-                    this.atk_x++;
-                    // mkp -= 0.01;
-                    mkp -= 0.001;
-                }
-                setTimeout(() => {
+                    this.att_radius, 0, 2 * Math.PI);
+                    context.fillStyle = 'brown';
+                    context.fill();
+                    context.closePath();
+                    
                     for(i=0; i < 200; i++){
-                        this.atk_x--;
+                        this.atk_x++;
+                        mkp -= mkp_reduction_factor_A;
                     }
-                }, 500);
-            }
+                    setTimeout(() => {
+                        for(i=0; i < 200; i++){
+                            this.atk_x--;
+                        }
+                    }, 500);
+                }
             wizard_list.forEach(wizzy => {
                 const di_x = (wizzy.x + wizzy.width*0.5) - this.atk_x; 
                 const di_y = (wizzy.y + wizzy.height*0.5) - this.y;
@@ -170,6 +194,7 @@ class Avatar {
                 } 
             })
         }
+
     }
 
     life(fire_list, wizard_list){
