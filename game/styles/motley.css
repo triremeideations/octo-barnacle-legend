@@ -1,7 +1,5 @@
 *{
-    --backdrop: #020213;
-    --canvas_backdrop: yellow;
-    --canvas_backdrop: rgb(2, 2, 100);
+    --backdrop: rgb(2, 2, 19);
     --canvas_backdrop: transparent;
     --wizard_fire_1: rgb(37, 0, 37);
 }
@@ -37,7 +35,6 @@ html{
     bottom: 0;
     width: 100%;
     height: 20%;
-    /* background-color: #c0c0c038; */
 }
 
 /*this is a temporary panel*/

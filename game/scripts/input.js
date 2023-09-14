@@ -48,7 +48,7 @@ class InputHandler{
             console.log(key, this.presskey);
             // add temp fix for bug on simultaneous press on mobile device,
             // locking player in perpetual motion.
-            // 'cask' in html
+            // 'cask, casque' in html
             if (
                 designation === 'w' ||
                 designation === 'a' ||
@@ -60,6 +60,17 @@ class InputHandler{
                     cask[i].classList.add('vash');
                 }
              }
+            else if(
+                designation === 'ArrowUp' ||
+                designation === 'ArrowLeft' ||
+                designation === 'ArrowRight' ||
+                designation === 'ArrowDown'
+            ){
+                let casque = document.getElementsByClassName('casque');
+                for (let i=0; i<casque.length; i++){
+                    casque[i].classList.add('vash');
+                }
+            }
         }
 
         //touch over
@@ -79,7 +90,19 @@ class InputHandler{
                     for (let i=0; i<cask.length; i++){
                         cask[i].classList.remove('vash');
                     }
-                 } 
+                 }
+                //perp fix contd
+                else if(
+                    designation === 'ArrowUp' ||
+                    designation === 'ArrowLeft' ||
+                    designation === 'ArrowRight' ||
+                    designation === 'ArrowDown'
+                ){
+                    let casque = document.getElementsByClassName('casque');
+                    for (let i=0; i<casque.length; i++){
+                        casque[i].classList.remove('vash');
+                    }
+                }
             console.log(key, this.presskey);
         }
 

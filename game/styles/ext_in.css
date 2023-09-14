@@ -91,27 +91,29 @@
     right: 20%;
     background-color: greenyellow;
 }
-.clasp, .cask{
+.clasp, .cask, .casque{
     position: inherit;
     width: 24%;
     height: 75%;
-    /* border: 1px solid white; */
     border: 1px solid #c0c0c038;
     left: 12%;
     top: 12%;
     border-radius: 45%;
     pointer-events: none;
 }
-.cask{
+.cask, .casque{
     width: 27%;
     height: 80%;
     left: 10%;
     top: 10%;
     border: none;
-    /* background-color: black; */
     border-radius: 0;
     display: none;
     pointer-events: all;
+}
+.casque{
+    left: 62%;
+    height: 85%;
 }
 .vash{
     display: block;
