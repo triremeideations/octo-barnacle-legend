@@ -146,13 +146,14 @@ class Avatar {
                 context.beginPath();
                 context.arc(this.atk_x, this.y,
                 this.att_radius, 0, 2 * Math.PI);
-                context.fillStyle = 'green';
+                context.fillStyle = 'brown';
                 context.fill();
                 context.closePath();
 
                 for(i=0; i < 200; i++){
                     this.atk_x++;
-                    mkp -= 0.01;
+                    // mkp -= 0.01;
+                    mkp -= 0.001;
                 }
                 setTimeout(() => {
                     for(i=0; i < 200; i++){

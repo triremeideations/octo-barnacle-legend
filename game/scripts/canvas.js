@@ -28,7 +28,7 @@ let cutout_ht = 345;
 
 const health_reduction_factor = 0.1;
 const score_reduction_factor = 0.2;
-const enemy_hurt_factor = 0.05;
+const enemy_hurt_factor = 0.5;
 
 function render_scene(){
     avatar_render_prep();
@@ -44,6 +44,8 @@ function render_scene(){
 
     //apply avatar on canvas
     avie.aura();
+
+    avatar_active === 'burst' ? avie.shield() : avie.draw();
     avie.move(input_in);
     avie.attack(input_in, fire_list, wizard_list);
     avie.life(fire_list, wizard_list);
