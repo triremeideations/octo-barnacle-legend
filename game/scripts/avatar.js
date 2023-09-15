@@ -163,7 +163,11 @@ class Avatar {
         }
 
         //dealing damage to wizard
-        if (wizard_health <= 0) wizard_health = 0;
+        if (wizard_health <= 0){
+            wizard_health = 0;
+            sessionStorage.setItem('game_won','true');
+        }
+
         if (
             avatar_active === 'punch'
         ){

@@ -45,7 +45,8 @@ function restart_game(){
     window.location.reload();
 }
 function denouement(){
-    if (sessionStorage.getItem('game_over')==='true'){
+    if (sessionStorage.getItem('game_over')==='true' ||
+        sessionStorage.getItem('game_won')==='true'){
         veil.classList.add('ostendii');
     }
 }

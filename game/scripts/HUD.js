@@ -14,6 +14,16 @@ function displayHealth(context){
         (canvas.width * 0.3), 400);
         denouement();
     }
+    if (sessionStorage.getItem('game_won')==='true'){
+        context.font = '8rem cnt_b';
+        context.fillStyle = 'rebeccapurple';
+        context.fillText('YOU WIN!',
+        (canvas.width * 0.3), 410);
+        context.fillStyle = 'goldenrod';
+        context.fillText('YOU WIN!',
+        (canvas.width * 0.3), 400);
+        denouement();
+    }
     else {
     context.beginPath();
     context.fillStyle = 'rebeccapurple';
