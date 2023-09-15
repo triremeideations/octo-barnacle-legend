@@ -11,7 +11,7 @@ sessionStorage.setItem('is_injured', 'false');
 sessionStorage.setItem('game_active', 'false');
 
 function curtain_call(x){
-    // full_sc();
+    full_sc();
     sessionStorage.setItem('st_ava','standby');
     sessionStorage.setItem('game_active','true');
     setTimeout(() => {
