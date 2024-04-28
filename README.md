@@ -7,7 +7,7 @@
 Warlock is a web-based, 2D, side-scrolling game written in Javascript for desktop browsers. It has its theme based on the world of "The Aged Era" by Stanley Aduaka. It is a fantasy adventure/epic series based loosely on Igbo mythology: A tale of spirits, oracles, gods and mortals; of their lives, lies, loves and lore.
 
 Bits and interesting backstory of the journey to this product are detailed
-here: [Landing Page](https://triremeideations.space/game) and in an article [HERE](https://www.linkedin.com/pulse/gaming-aged-era-bringing-books-life-code-stanley-aduaka/)
+here: [Landing Page](https://trireme-ideations.web.app/game) and in an article [HERE](https://www.linkedin.com/pulse/gaming-aged-era-bringing-books-life-code-stanley-aduaka/)
 It encompasses the challenges, thought process and miscellaneous engaging stuff.
 
 The creator can be found here: [LinkedIn](https://www.linkedin.com/in/stanley-a-aa1669262/)
@@ -38,8 +38,8 @@ It is the first ever deployment intended only for evaluation purposes.
 
 ## Demo
 
-WARLOCK ver 1.0 is [available here](https://triremeideations.space/in_house_test).
+WARLOCK ver 1.0 is [available here](https://trireme-ideations.web.app/in_house_test).
 
-## Licence
+## License
 
 All rights reserved. Permission to modify, update, replicate or use the contents of the repo for any purpose other than viewing is neither stated nor implied.
